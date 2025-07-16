@@ -49,6 +49,7 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.textOut = new System.Windows.Forms.TextBox();
+            this.button21 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -270,11 +271,23 @@
             this.textOut.Size = new System.Drawing.Size(258, 20);
             this.textOut.TabIndex = 20;
             // 
+            // button21
+            // 
+            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button21.ForeColor = System.Drawing.Color.Red;
+            this.button21.Location = new System.Drawing.Point(231, 85);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(67, 39);
+            this.button21.TabIndex = 21;
+            this.button21.Text = "CE";
+            this.button21.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 461);
+            this.Controls.Add(this.button21);
             this.Controls.Add(this.textOut);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button18);
@@ -327,6 +340,7 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.TextBox textOut;
+        private System.Windows.Forms.Button button21;
     }
 }
 
