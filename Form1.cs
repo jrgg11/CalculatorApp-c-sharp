@@ -45,7 +45,14 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button
+        private void buttonClearEntry_Click(object sender, EventArgs e)
+        {
+            if (currentCalculation.Length > 0)
+            {
+                currentCalculation = currentCalculation.Substring(0, currentCalculation.Length - 1);
+                textOut.Text = currentCalculation;
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
