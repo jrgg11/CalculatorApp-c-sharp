@@ -48,7 +48,7 @@
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textOut = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -61,7 +61,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "C";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button_Click);
             // 
             // button2
             // 
@@ -177,7 +177,7 @@
             this.button12.TabIndex = 8;
             this.button12.Text = "4";
             this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.button12.Click += new System.EventHandler(this.button_Click);
             // 
             // button13
             // 
@@ -263,19 +263,19 @@
             this.button20.Text = "+/-";
             this.button20.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textOut
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 20);
-            this.textBox1.TabIndex = 20;
+            this.textOut.Location = new System.Drawing.Point(25, 59);
+            this.textOut.Name = "textOut";
+            this.textOut.Size = new System.Drawing.Size(258, 20);
+            this.textOut.TabIndex = 20;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 461);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textOut);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button19);
@@ -298,6 +298,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,7 +326,7 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textOut;
     }
 }
 
