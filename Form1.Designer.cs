@@ -280,13 +280,14 @@
             this.button20.TabIndex = 16;
             this.button20.Text = "+/-";
             this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button_Click);
+            this.button20.Click += new System.EventHandler(this.buttonSignChange_Click);
             // 
             // textOut
             // 
-            this.textOut.Location = new System.Drawing.Point(25, 59);
+            this.textOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textOut.Location = new System.Drawing.Point(12, 32);
             this.textOut.Name = "textOut";
-            this.textOut.Size = new System.Drawing.Size(258, 20);
+            this.textOut.Size = new System.Drawing.Size(286, 35);
             this.textOut.TabIndex = 20;
             // 
             // button21
@@ -305,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 461);
+            this.ClientSize = new System.Drawing.Size(306, 462);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.textOut);
             this.Controls.Add(this.button17);

@@ -54,6 +54,33 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void buttonSignChange_Click(object sender, EventArgs e)
+        {
+            if (currentCalculation.Length > 0)
+            {
+                for(int i = currentCalculation.Length - 1; i >= 0; i--)
+                {
+                    if ((currentCalculation[i] == '+' || currentCalculation[i] == '-') && currentCalculation[i+1]!=0)
+                    {
+                        // Change the sign of the last operator
+                        if (currentCalculation[i] == '+')
+                            currentCalculation = currentCalculation.Remove(i, 1).Insert(i, "-");
+                        else
+                            currentCalculation = currentCalculation.Remove(i, 1).Insert(i, "+");
+                        break;
+                    }
+                    else if ((currentCalculation[i] == '*' || currentCalculation[i] == '/' || currentCalculation[i] == '%') && currentCalculation[i + 1] != 0)
+                    {
+                        currentCalculation = currentCalculation.Insert(i+1, "(-");
+                        currentCalculation += ")";
+                        break;
+                    }
+                    else if(i==0 && currentCalculation[i] != 0) currentCalculation = currentCalculation.Insert(i, "-");
+                }
+                textOut.Text = currentCalculation;
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
