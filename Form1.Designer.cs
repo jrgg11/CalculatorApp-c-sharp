@@ -74,7 +74,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "( )";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button_Click);
+            this.button2.Click += new System.EventHandler(this.buttonParantheses_Click);
             // 
             // button3
             // 

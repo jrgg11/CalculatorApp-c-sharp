@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,24 @@ namespace WindowsFormsApp1
                 }
                 textOut.Text = currentCalculation;
             }
+        }
+
+        private void buttonParantheses_Click(object sender, EventArgs e)
+        {
+            int openParanthesesCount = currentCalculation.Count(c => c == '(');
+            int closeParanthesesCount = currentCalculation.Count(c => c == ')');
+
+            if(openParanthesesCount > closeParanthesesCount)
+            {
+                // Add a closing parenthesis
+                currentCalculation += ")";
+            }
+            else
+            {
+                // Add an opening parenthesis
+                currentCalculation += "(";
+            }
+            textOut.Text = currentCalculation;
         }
 
         private void Form1_Load(object sender, EventArgs e)
