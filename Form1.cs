@@ -94,9 +94,22 @@ namespace WindowsFormsApp1
             }
             else
             {
-                // Add an opening parenthesis
-                currentCalculation += "(";
+                if(currentCalculation.Length > 0 &&
+                   (currentCalculation[currentCalculation.Length - 1] != '+' ||
+                    currentCalculation[currentCalculation.Length - 1] != '-' ||
+                    currentCalculation[currentCalculation.Length - 1] != '*' ||
+                    currentCalculation[currentCalculation.Length - 1] != '/' ||
+                    currentCalculation[currentCalculation.Length - 1] != '%'))
+                {
+                    currentCalculation += "*(";
+                }
+                else
+                {
+                    // Add an opening parenthesis
+                    currentCalculation += "(";
+                }
             }
+
             textOut.Text = currentCalculation;
         }
 
