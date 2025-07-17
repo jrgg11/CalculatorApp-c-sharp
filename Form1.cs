@@ -95,10 +95,10 @@ namespace WindowsFormsApp1
             else
             {
                 if(currentCalculation.Length > 0 &&
-                   (currentCalculation[currentCalculation.Length - 1] != '+' ||
-                    currentCalculation[currentCalculation.Length - 1] != '-' ||
-                    currentCalculation[currentCalculation.Length - 1] != '*' ||
-                    currentCalculation[currentCalculation.Length - 1] != '/' ||
+                   (currentCalculation[currentCalculation.Length - 1] != '+' &&
+                    currentCalculation[currentCalculation.Length - 1] != '-' &&
+                    currentCalculation[currentCalculation.Length - 1] != '*' &&
+                    currentCalculation[currentCalculation.Length - 1] != '/' &&
                     currentCalculation[currentCalculation.Length - 1] != '%'))
                 {
                     currentCalculation += "*(";
