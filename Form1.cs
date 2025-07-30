@@ -19,19 +19,19 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void button_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
             currentCalculation += ((Button)sender).Text;
             textOut.Text = currentCalculation;
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void ButtonClear_Click(object sender, EventArgs e)
         {
             currentCalculation = "";
             textOut.Text = currentCalculation;
         }
 
-        private void buttonEquals_Click(object sender, EventArgs e)
+        private void ButtonEquals_Click(object sender, EventArgs e)
         {
             string formattedCalculation = currentCalculation.ToString();
             try
@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void buttonClearEntry_Click(object sender, EventArgs e)
+        private void ButtonClearEntry_Click(object sender, EventArgs e)
         {
             if (currentCalculation.Length > 0)
             {
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void buttonSignChange_Click(object sender, EventArgs e)
+        private void ButtonSignChange_Click(object sender, EventArgs e)
         {
             if (currentCalculation.Length == 0) return;
 
@@ -67,16 +67,16 @@ namespace WindowsFormsApp1
 
         }
 
-        private void buttonParantheses_Click(object sender, EventArgs e)
+        private void ButtonParantheses_Click(object sender, EventArgs e)
         {
             int openParanthesesCount = currentCalculation.Count(c => c == '(');
             int closedParanthesesCount = currentCalculation.Count(c => c == ')');
 
-            if (checkOpenParantheses(openParanthesesCount, closedParanthesesCount))
+            if (CheckOpenParantheses(openParanthesesCount, closedParanthesesCount))
             {
                 try
                 {
-                    if (checkLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
+                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
                         currentCalculation += "(";
                     else
                         currentCalculation += ")";
@@ -87,7 +87,7 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    if (checkLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
+                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
                         currentCalculation += "(";
                     else
                         currentCalculation += "*(";
@@ -118,13 +118,13 @@ namespace WindowsFormsApp1
                 if (i == 0 && currentCalculation[i] != 0)
                     currentCalculation = currentCalculation.Insert(i, Symbols.MINUS_SIGN.ToString());
         }
-        private bool checkOpenParantheses(int open, int closed)
+        private bool CheckOpenParantheses(int open, int closed)
         {
             if (open > closed)
                 return true;
             else return false;
         }
-        private bool checkLastChar(char c, string str)
+        private bool CheckLastChar(char c, string str)
         {
             if (  str.Length > 0 && (c == Symbols.PLUS_SIGN ||
                     c == Symbols.MINUS_SIGN ||
