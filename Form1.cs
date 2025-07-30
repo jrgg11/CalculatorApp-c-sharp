@@ -81,7 +81,7 @@ namespace WindowsFormsApp1
                     else
                         currentCalculation += ")";
                 }
-                catch { currentCalculation += "("; }
+                catch(IndexOutOfRangeException) { currentCalculation += "("; }
             }
             else 
             {
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
                     else
                         currentCalculation += "*(";
                 }
-                catch { currentCalculation += "("; }
+                catch(IndexOutOfRangeException) { currentCalculation += "("; }
             }
 
             textOut.Text = currentCalculation;
