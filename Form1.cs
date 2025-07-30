@@ -57,60 +57,83 @@ namespace WindowsFormsApp1
 
         private void buttonSignChange_Click(object sender, EventArgs e)
         {
-            if (currentCalculation.Length > 0)
+            if (currentCalculation.Length == 0) return;
+
+            for (int i = currentCalculation.Length - 1; i >= 0; i--)
             {
-                for(int i = currentCalculation.Length - 1; i >= 0; i--)
-                {
-                    if ((currentCalculation[i] == '+' || currentCalculation[i] == '-') && currentCalculation[i+1]!=0)
-                    {
-                        // Change the sign of the last operator
-                        if (currentCalculation[i] == '+')
-                            currentCalculation = currentCalculation.Remove(i, 1).Insert(i, "-");
-                        else
-                            currentCalculation = currentCalculation.Remove(i, 1).Insert(i, "+");
-                        break;
-                    }
-                    else if ((currentCalculation[i] == '*' || currentCalculation[i] == '/' || currentCalculation[i] == '%') && currentCalculation[i + 1] != 0)
-                    {
-                        currentCalculation = currentCalculation.Insert(i+1, "(-");
-                        currentCalculation += ")";
-                        break;
-                    }
-                    else if(i==0 && currentCalculation[i] != 0) currentCalculation = currentCalculation.Insert(i, "-");
-                }
-                textOut.Text = currentCalculation;
+                ChangeSignAtIndex(i);
             }
+            textOut.Text = currentCalculation;
+
         }
 
         private void buttonParantheses_Click(object sender, EventArgs e)
         {
             int openParanthesesCount = currentCalculation.Count(c => c == '(');
-            int closeParanthesesCount = currentCalculation.Count(c => c == ')');
+            int closedParanthesesCount = currentCalculation.Count(c => c == ')');
 
-            if(openParanthesesCount > closeParanthesesCount)
+            if (checkOpenParantheses(openParanthesesCount, closedParanthesesCount))
             {
-                // Add a closing parenthesis
-                currentCalculation += ")";
+                try
+                {
+                    if (checkLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
+                        currentCalculation += "(";
+                    else
+                        currentCalculation += ")";
+                }
+                catch { currentCalculation += "("; }
             }
-            else
+            else 
             {
-                if(currentCalculation.Length > 0 &&
-                   (currentCalculation[currentCalculation.Length - 1] != '+' &&
-                    currentCalculation[currentCalculation.Length - 1] != '-' &&
-                    currentCalculation[currentCalculation.Length - 1] != '*' &&
-                    currentCalculation[currentCalculation.Length - 1] != '/' &&
-                    currentCalculation[currentCalculation.Length - 1] != '%'))
+                try
                 {
-                    currentCalculation += "*(";
+                    if (checkLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
+                        currentCalculation += "(";
+                    else
+                        currentCalculation += "*(";
                 }
-                else
-                {
-                    // Add an opening parenthesis
-                    currentCalculation += "(";
-                }
+                catch { currentCalculation += "("; }
             }
 
             textOut.Text = currentCalculation;
+        }
+        private void ChangeSignAtIndex(int i)
+        {
+            if ((currentCalculation[i] == Symbols.PLUS_SIGN || currentCalculation[i] == Symbols.MINUS_SIGN) && currentCalculation[i + 1] != 0)
+            {
+                // Change the sign of the last operator
+                if (currentCalculation[i] == Symbols.PLUS_SIGN)
+                    currentCalculation = currentCalculation.Remove(i, 1).Insert(i, Symbols.MINUS_SIGN.ToString());
+                else
+                    currentCalculation = currentCalculation.Remove(i, 1).Insert(i, Symbols.PLUS_SIGN.ToString());
+
+            }
+            else if ((currentCalculation[i] == '*' || currentCalculation[i] == '/' || currentCalculation[i] == '%') && currentCalculation[i + 1] != 0)
+            {
+                currentCalculation = currentCalculation.Insert(i + 1, "(-");
+                currentCalculation += ")";
+
+            }
+            else 
+                if (i == 0 && currentCalculation[i] != 0)
+                    currentCalculation = currentCalculation.Insert(i, Symbols.MINUS_SIGN.ToString());
+        }
+        private bool checkOpenParantheses(int open, int closed)
+        {
+            if (open > closed)
+                return true;
+            else return false;
+        }
+        private bool checkLastChar(char c, string str)
+        {
+            if (  str.Length > 0 && (c == Symbols.PLUS_SIGN ||
+                    c == Symbols.MINUS_SIGN ||
+                    c == Symbols.MULTIPLY_SIGN ||
+                    c == Symbols.DIVIDE_SIGN ||
+                    c == Symbols.MODULO_SIGN ||
+                    c == Symbols.LEFT_PARENTHESIS))
+                return true;
+            else return false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
