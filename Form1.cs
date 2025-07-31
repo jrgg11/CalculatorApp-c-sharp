@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace CalculatorApp
 {
     public partial class Form1 : Form
     {
@@ -72,28 +72,7 @@ namespace WindowsFormsApp1
             int openParanthesesCount = currentCalculation.Count(c => c == '(');
             int closedParanthesesCount = currentCalculation.Count(c => c == ')');
 
-            if (CheckOpenParantheses(openParanthesesCount, closedParanthesesCount))
-            {
-                try
-                {
-                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
-                        currentCalculation += "(";
-                    else
-                        currentCalculation += ")";
-                }
-                catch(IndexOutOfRangeException) { currentCalculation += "("; }
-            }
-            else 
-            {
-                try
-                {
-                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
-                        currentCalculation += "(";
-                    else
-                        currentCalculation += "*(";
-                }
-                catch(IndexOutOfRangeException) { currentCalculation += "("; }
-            }
+            CheckKindOfBracket(openParanthesesCount, closedParanthesesCount);
 
             textOut.Text = currentCalculation;
         }
@@ -134,6 +113,31 @@ namespace WindowsFormsApp1
                     c == Symbols.LEFT_PARENTHESIS))
                 return true;
             else return false;
+        }
+        private void CheckKindOfBracket(int open, int closed) 
+        {
+            if (CheckOpenParantheses(open, closed))
+            {
+                try
+                {
+                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
+                        currentCalculation += "(";
+                    else
+                        currentCalculation += ")";
+                }
+                catch (IndexOutOfRangeException) { currentCalculation += "("; }
+            }
+            else
+            {
+                try
+                {
+                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
+                        currentCalculation += "(";
+                    else
+                        currentCalculation += "*(";
+                }
+                catch (IndexOutOfRangeException) { currentCalculation += "("; }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
