@@ -34,10 +34,9 @@ namespace CalculatorApp
 
         private void ButtonEquals_Click(object sender, EventArgs e)
         {
-            string formattedCalculation = currentCalculation.ToString();
             try
             {
-                textOut.Text = new DataTable().Compute(formattedCalculation, null).ToString();
+                textOut.Text = new DataTable().Compute(currentCalculation, null).ToString();
                 currentCalculation = textOut.Text;
             }
             catch
