@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp.BusinessLogic;
 
 namespace CalculatorApp
 {
@@ -69,10 +70,7 @@ namespace CalculatorApp
 
         private void ButtonParantheses_Click(object sender, EventArgs e)
         {
-            int openParanthesesCount = currentCalculation.Count(c => c == '(');
-            int closedParanthesesCount = currentCalculation.Count(c => c == ')');
-
-            CheckKindOfBracket(openParanthesesCount, closedParanthesesCount);
+            currentCalculation = BracketHelpers.AddBracket(currentCalculation);
 
             textOut.Text = currentCalculation;
         }
@@ -96,48 +94,6 @@ namespace CalculatorApp
             else 
                 if (i == 0 && currentCalculation[i] != 0)
                     currentCalculation = currentCalculation.Insert(i, Symbols.MINUS_SIGN.ToString());
-        }
-        private bool CheckOpenParantheses(int open, int closed)
-        {
-            if (open > closed)
-                return true;
-            else return false;
-        }
-        private bool CheckLastChar(char c, string str)
-        {
-            if (  str.Length > 0 && (c == Symbols.PLUS_SIGN ||
-                    c == Symbols.MINUS_SIGN ||
-                    c == Symbols.MULTIPLY_SIGN ||
-                    c == Symbols.DIVIDE_SIGN ||
-                    c == Symbols.MODULO_SIGN ||
-                    c == Symbols.LEFT_PARENTHESIS))
-                return true;
-            else return false;
-        }
-        private void CheckKindOfBracket(int open, int closed) 
-        {
-            if (CheckOpenParantheses(open, closed))
-            {
-                try
-                {
-                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
-                        currentCalculation += "(";
-                    else
-                        currentCalculation += ")";
-                }
-                catch (IndexOutOfRangeException) { currentCalculation += "("; }
-            }
-            else
-            {
-                try
-                {
-                    if (CheckLastChar(currentCalculation[currentCalculation.Length - 1], currentCalculation))
-                        currentCalculation += "(";
-                    else
-                        currentCalculation += "*(";
-                }
-                catch (IndexOutOfRangeException) { currentCalculation += "("; }
-            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
